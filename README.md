@@ -62,7 +62,24 @@ sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-4. Verifique se a instalação foi bem-sucedida executando o comando:
+4. Adicione o usuário ao grupo "docker":
+```bash
+sudo usermod -aG docker $USER
+```
+Em seguida, faça logout e faça login novamente para que as alterações tenham efeito.
+
+Você pode verificar se as alterações foram aplicadas corretamente executando o seguinte comando:
+
+```bash
+groups
+```
+
+Ele exibirá uma lista dos grupos aos quais o usuário atual pertence, e você deverá ver o grupo "docker" listado lá.
+
+Certifique-se de substituir "docker-compose" por "docker compose" se estiver usando o Docker Compose V2.
+
+
+5. Verifique se a instalação foi bem-sucedida executando o comando:
 ```bash
 docker-compose --version
 ```
@@ -70,6 +87,8 @@ ou
 ```bash
 docker compose version
 ```
+
+
 
 <br>
 
