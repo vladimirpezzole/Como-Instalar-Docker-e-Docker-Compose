@@ -18,10 +18,19 @@ sudo apt remove docker docker-engine docker.io containerd runc
 ```
 
 3. Adicione o repositório oficial do Docker GPG:
+
+
+
 ```bash
 sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
-curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/docker-archive-keyring.gpg >/dev/null
+
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
+
+>> *antigo -- ( `curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/docker-archive-keyring.gpg >/dev/null` )
 
 4. Adicione o repositório do Docker:
 ```bash
