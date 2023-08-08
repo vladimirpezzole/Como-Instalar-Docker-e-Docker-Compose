@@ -2,6 +2,8 @@
 
 > > **Última atualização: 08 de agosto de 2023**
 
+[*site docker](https://docs.docker.com/engine/install/ubuntu/)
+
 Este guia fornece instruções passo a passo para instalar o Docker e o Docker Compose no Debian e derivados.
 
 ## **Instalação do Docker no Debian**
@@ -19,6 +21,7 @@ sudo apt-get update
 sudo apt-get install ca-certificates curl gnupg
 ```
 
+<<<<<<< HEAD
 2. Adicionar a Docker Engine oficial de chave GPG::
 
 ```bash
@@ -29,6 +32,24 @@ sudo chmod a+r /etc/apt/keyrings/docker.gpg
 
 3. Use o seguinte comando para configurar o repositório:
 
+=======
+3. Adicione o repositório oficial do Docker GPG:
+
+
+
+```bash
+sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+>> *antigo -- ( `curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/docker-archive-keyring.gpg >/dev/null` )
+
+4. Adicione o repositório do Docker:
+>>>>>>> main
 ```bash
 echo \
   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
